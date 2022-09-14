@@ -1,0 +1,95 @@
+{% extends 'sellerbase.html'%}
+{% block content %}
+
+
+
+
+<div class="col-md-8">
+		<form method="post" action="{% url 'updateprofileAction' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+			
+			{% for v in seller %}
+				<input type="hidden" name="id"value="{{v.id}}">
+
+			<table>
+				<tr>
+				<td>NAME</td>
+				<td><input type="text" name="name" class="form-control" value="{{v.name}}"></td>
+				</tr>
+
+				<tr>
+				<td>GENDER</td>
+				<td>
+				{%  ifequal v.gender 'Male' %}
+				<input type="radio" name="gender" value="Male" checked="true">Male
+				<input type="radio" name="gender" value="Female" >Female
+				{% else %}
+				<input type="radio" name="gender" value="Male">Male
+				<input type="radio" name="gender" value="Female"checked="true">Female
+				{% endifequal %}
+				</td>
+				</tr>
+				
+				<tr>
+				<td>ADDRESS</td>
+				<td><textarea name="address" class="form-control"  rows="4"  coloumns="4">{{v.address}}</textarea></td>
+				</tr>
+
+				<tr>
+				<td>DOB</td>
+				<td><input type="date" name="dob" class="form-control" value="{{v.dob}}"></td>
+				
+				</tr>
+
+
+				<tr>
+				<td>COUNTRY</td>
+				<td>
+				         <select  name="country">
+				           <option value="{{v.country}} ">india</option>
+				         </select>
+				</td>
+				</tr>
+			
+				<tr>
+				<td>PHONE</td>
+				<td><input type="text" name="phone" value="{{v.phone}}"></td>
+				</tr>
+				
+				<tr>
+				<td>USERNAME</td>
+				<td><input type="text" name="username" class="form-control" value="{{v.username}}"></td>
+				</tr>
+				
+				<tr>
+				<td>PASSWORD</td>
+				<td><input type="password" name="password" class="form-control" value="{{v.password}}"></td>
+				</tr>
+
+				<tr>
+				<td>FILE</td>
+				<td><img src="{{v.file.url}}" height="100px" width="100px" alt="no pic"></td>
+				<td><input type="file"  name="file"></td>
+				</tr>
+
+
+				<tr>
+				<td></td>
+				<td><input type="submit" class="btn btn-danger" value="update"></td>
+				
+				</tr>
+
+
+
+			</table>
+			{% endfor %}
+		</form>
+				</div>
+		{% if messages %}
+	{% for msg  in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+	{% endfor %}
+{% endif %}
+{% endblock %}

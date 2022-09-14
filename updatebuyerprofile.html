@@ -1,0 +1,78 @@
+<html>
+	<body>
+		<form method="post" action="{% url  'updatebuyerAction' %}"enctype="multipart/formdata">
+					{% csrf_token %}
+			
+			{% for v in buyer %}
+			<input type="hidden" name="id" value="{{v.id}}">
+			<table>
+				<tr>
+				<td>NAME</td>
+				<td><input type="text" name="name" value="{{v.name}}"></td>
+				</tr>
+				
+				<tr>
+				<td>GENDER</td>
+				<td>
+				{% ifequal v.gender 'Male' %}
+				<input type="radio" name="gender" value="male"  checked="true">Male
+				<input type="radio" name="gender" value="female">Female
+				{% else %}
+				<input type="radio" name="gender" value="male">Male
+				<input type="radio" name="gender" value="female" checked="true">Female
+				{% endifequal %}
+				</td>
+				</tr>
+
+				<tr>
+				<td>ADDRESS</td>
+				<td><textarea name ="address"  rows="4" coloumns="5">{{v.address}}</textarea></td>
+				</tr>
+				
+				<tr>
+				<td>COUNTRY</td>
+				<td><select name="country">
+				<option value="{{v.country}}">india</option>
+				</select>
+				</td>
+				</tr>
+
+				<tr>
+				<td>PHONE</td>
+				<td><input type="text" name="phone" value="{{v.phone}}"></td>
+				</tr>
+
+				<tr>
+				<td>USERNAME</td>
+				<td><input type="text" name="username" value="{{v.username}}"></td>
+				</tr>
+
+				<tr>
+				<td>PASSWORD</td>
+				<td><input type="password" name="password" value="{{v.password}}"></td>
+				</tr>
+
+				<tr>
+				<td></td>
+				<td><input type="submit" value="update"></td>
+				
+				</tr>
+
+
+
+
+			</table>
+			{% endfor %}
+		</form>
+</body>
+{% if messages %}
+	{% for msg in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+	{% endfor %}
+{% endif %}
+
+
+
+</html>

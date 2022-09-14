@@ -1,0 +1,128 @@
+{%extends 'buyerbase.html'%}
+
+{% block content %}
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+<html>
+		
+		<script src="/static/jquery-1.8.3.min.js"></script>
+		<script>
+			$(document).ready(function(){
+			$("#username").change(function(){
+			var username=$("#username").val();
+			$.ajax({
+				url:"{% url 'checkusername' %}",
+				data:{'username':username},
+				success:function(data){
+				if(data.valid=="exists")
+				{
+					alert("username already exist");
+					$("#username").val();
+				}
+
+				}
+
+			})
+
+			})
+
+
+			})
+
+
+
+		
+		</script>
+		
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<body>
+		<form method="post" action="{% url 'buyerAction' %}">
+			{% csrf_token %}
+			<table>
+				<tr>
+				<td>NAME</td>
+				<td><input type="text"  name="name"></td>
+				</tr>
+				
+				<tr>
+				<td>GENDER</td>
+				<td><input type="radio"  name="gender" value="male">Male
+				<input type="radio" name="gender" value="female">Female</td>
+				</tr>
+				
+				<tr>
+				<td>ADDRESS</td>
+				<td><textarea name="address" row="4" coloumns="4"></textarea></td>
+				</tr>
+				
+				<tr>
+				<td>DOB</td>
+				<td><input type="date" name="dob"></td>
+				</tr>
+				
+				<tr>
+				<td>COUNTRY</td>
+				<td><select name="country">
+				<option value=" ">--select--</option>
+				<option value="INDIA">INDIA</option>
+				<option value="JAPAN">JAPAN</option>
+				<option value="BHUTAN">BHUTAN</option>
+				</select>
+				</td>
+				</tr>
+
+				<tr>
+				<td>PHONE</td>
+				<td><input type="text" name="phone"></td>
+				</tr>
+				
+				<tr>
+				<td>USERNAME</td>
+				<td><input type="text"  name="username"  id="username"></td>
+				</tr>
+				
+				<tr>
+				<td>PASSWORD</td>
+				<td><input type="text" name="password"></td>
+				</tr>
+				
+				<tr>
+				<td></td>
+				<td><input type="submit" value="buyer register"></td>
+
+				</tr>
+				
+			</table>
+		</form>
+	<body>
+{% if messages %}
+	{% for msg in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+ 	{% endfor %}
+{% endif %}
+</html>

@@ -1,0 +1,82 @@
+{% extends 'sellerbase.html' %}
+{% block content %}
+
+	
+	<div class="banner-top">
+	<div class="container w=25px">
+		<h3 >Login</h3>
+		<h4><a href="index.html">Home</a><label>/</label>Login</h4>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+</div>
+
+<!--login-->
+
+	
+	
+		
+					<form action="#" method="post">
+						<div class="key">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<input  type="text" value="Email" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+							<input  type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<input type="submit" value="Login">
+					</form>
+				</div>
+				<div class="forg">
+					<a href="#" class="forg-left">Forgot Password</a>
+					<a href="register.html" class="forg-right">Register</a>
+				<div class="clearfix"></div>
+				</div>
+			</div>
+		
+
+
+{% endblock %}
+
+
+
+
+<html>
+	<body>
+		<form method="post" action="{% url 'loginAction' %}">
+			{% csrf_token  %}
+			<table>
+				<tr>	
+					<td>LOGIN</td>
+				</tr>
+				<tr>
+					<td>USERNAME</td>
+					<td><input type="text" name="username"></td>
+			 	</tr>
+				<tr>
+					<td>PASSWORD</td>
+					<td><input type="password"  name="password"></td>
+				</tr>
+				<tr>
+					<td> </td>
+					<td><input type="submit"  value="login">
+				</tr>
+				<tr>
+				<td></td>
+				<td><a href="{% url 'forgotpassword' %}">forgotpassword?</a></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+{% if messages %}
+	{% for msg in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+	{% endfor %}
+{% endif %}
+
+</html>

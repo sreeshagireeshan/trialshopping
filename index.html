@@ -1,0 +1,14 @@
+<html>
+	<li><a href="{% url  'login' %}">login</a></li>
+	<li><a href="{% url 'buyerregistration' %}">BuyerRegistration</a></li>
+	<li><a href="{% url 'sellerregistration' %}">SellerRegistration</a></li>
+	
+	
+</html>
+{% if messages %}
+	{% for msg in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+	{% endfor %}
+{% endif %}

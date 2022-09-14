@@ -1,0 +1,35 @@
+{% extends 'buyerbase.html' %}
+{% block content %}
+<li><a href="{% url 'updatebuyerprofile' %}">updatebuyerprofile</a></li>
+<li><a href="{% url 'viewbuyerproducts' %}">viewbuyerproduct</a></li>
+<li><a href="{% url 'viewbuyerorder' %}">viewbuyerorder</a></li>
+<li><a href="{% url 'searchproduct' %}">searchproduct</a></li>
+<li><a href="{% url 'searchcategory' %}">searchcategory</a></li>
+
+{% endblock %}
+
+
+
+<html>
+<body>
+	<h>welcome buyershome{% for v in data %}
+			          {{v.username}}
+			          {% endfor %}	</h>
+<li><a href="{% url 'updatebuyerprofile' %}">updatebuyerprofile</a></li>
+<li><a href="{% url 'viewbuyerproducts' %}">viewbuyerproduct</a></li>
+<li><a href="{% url 'viewbuyerorder' %}">viewbuyerorder</a></li>
+<li><a href="{% url 'searchproduct' %}">searchproduct</a></li>
+<li><a href="{% url 'searchcategory' %}">searchcategory</a></li>
+
+<li><a href="{% url 'logout' %}">logout</li>
+
+
+</body>
+{% if messages %}
+	{% for msg in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+	{% endfor %}
+{% endif %}
+</html>

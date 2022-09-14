@@ -1,0 +1,139 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+
+	<section class="section" style="width:100%;margin-left:-10px">
+      <div class="row">
+  
+	<div class="card">
+            <div class="card-body">
+              <h5 class="card-title">View Registered Sellers</h5>
+		<!-- Default Table -->
+              <table class="table">
+              
+                <thead>
+                  <tr>
+                    <th scope="col">NAME</th>
+                    <th scope="col">ADDRESS</th>
+                    <th scope="col">GENDER</th>
+                    <th scope="col">COUNTRY</th>
+                    <th scope="col">DOB</th>
+		     <th scope="col">PHONE</th>
+		    <th scope="col">FILE</th>
+		    <th scope="col">USERNAME</th>
+		    <th scope="col">PASSWORD</th>
+                  </tr>
+
+                </thead>
+                 
+                <tbody>
+		{% for v in seller %}
+                  <tr>
+                    
+                    <td>{{v.name}}</td>
+                    <td>{{v.gender}}</td>
+                    <td>{{v.address}}</td>
+                    <td>{{v.dob}}</td>
+			<td>{{v.country}}</td>
+			<td>{{v.phone}}</td>
+			<td>{{v.username}}</td>
+			<td><img src="{{v.file.url}}" height="100px"  width="100px"  alt="no pic"></td>
+			<td>{{v.status}}</td>
+			<td><a href="{% url 'Approve' v.id %}">Approve</a></td>
+					<td><a href="{%url 'Rejected' v.id %}">Rejected</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+				<tr>
+					<th>Name</th>
+					<th>Gender</th>
+					<th>Address</th>
+					<th>DOB</th>
+					<th>COUNTRY</th>
+					<th>PHONE</th>
+					<th>USERNAME</th>
+					<th>FILE</th>
+					<th>STATUS</th>
+
+				</tr>
+				{% for v in seller %}
+				<tr>
+					<td>{{v.name}}</td>
+					<td>{{v.gender}}</td>
+					<td>{{v.address}}</td>
+					<td>{{v.dob}}</td>
+					<td>{{v.country}}</td>
+					<td>{{v.phone}}</td>
+					<td>{{v.username}}</td>
+					<td><img src="{{v.file.url}}" height="100px"  width="100px"  alt="no pic"></td>
+					<td>{{v.status}}</td>
+					<td><a href="{% url 'Approve' v.id %}">Approve</a></td>
+					<td><a href="{%url 'Rejected' v.id %}">Rejected</a></td>
+					
+					
+				</tr>
+				{% endfor %}
+
+
+				
+			</table>
+
+
+
+
+<html>
+	<body>
+		<form>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Gender</th>
+					<th>Address</th>
+					<th>DOB</th>
+					<th>COUNTRY</th>
+					<th>PHONE</th>
+					<th>USERNAME</th>
+					<th>FILE</th>
+					<th>STATUS</th>
+
+				</tr>
+				{% for v in seller %}
+				<tr>
+					<td>{{v.name}}</td>
+					<td>{{v.gender}}</td>
+					<td>{{v.address}}</td>
+					<td>{{v.dob}}</td>
+					<td>{{v.country}}</td>
+					<td>{{v.phone}}</td>
+					<td>{{v.username}}</td>
+					<td><img src="{{v.file.url}}" height="100px"  width="100px"  alt="no pic"></td>
+					<td>{{v.status}}</td>
+					<td><a href="{% url 'Approve' v.id %}">Approve</a></td>
+					<td><a href="{%url 'Rejected' v.id %}">Rejected</a></td>
+					
+					
+				</tr>
+				{% endfor %}
+
+
+				
+			</table>
+		</form>
+	</body>
+</html>

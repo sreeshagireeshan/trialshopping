@@ -1,0 +1,35 @@
+<html>
+	<body>
+		<form method="post" name="form" action="{% url 'trackingaddingAction' %}">
+			{% csrf_token %}
+			<table>
+			
+					
+
+				{% for v in order %}
+				<tr>
+				<td><input type="hidden" name="id" value="{{v.id}}"></td>
+				<td>Details</td>
+				<td><textarea name="details" rows="5" columns="4"></textarea></td>
+				<tr>
+				<td></td>
+				<td><input type="submit" value="add"></td>
+				</tr>
+
+				</tr>
+				{% endfor %}
+			
+		</table>
+
+
+
+		</form>
+</body>
+{% if messages %}
+	{% for msg in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+	{% endfor %}
+{% endif %}
+</html>

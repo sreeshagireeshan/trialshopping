@@ -1,0 +1,24 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+
+
+<html>
+	<body>
+		<h>welcome</h>
+<li><a href="{% url 'addcategory' %}">Add category</a></li>
+<li><a href="{% url 'viewregisteredsellers' %}">View Registered Sellers</a></li>
+<li><a href="{% url 'logout' %}">logout</a></li>
+
+
+
+</body>
+{% if messages %}
+	{% for msg in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+	{% endfor %}
+{% endif %}
+{% endblock %}
+</html>
+

@@ -1,0 +1,27 @@
+<html>
+	<body>
+		<table>
+			<tr>
+				<th>Date<th>
+				<th>Time</th>
+				<th>Details</th>
+			</tr>
+
+			{% for v in order %}
+			<tr>
+			<td>{{v.date}}</td>
+			<td>{{v.time}}</td>
+			<td>{{v.details}}</td>
+			</tr>
+			{% endfor %}
+
+
+
+
+
+		</table>
+
+
+
+</body>
+</html>

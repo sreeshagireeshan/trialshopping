@@ -1,0 +1,25 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<form  method="post" action="{% url  'categoryAction' %}" >
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>category<td>
+					<td><input type="text"  name="category"></td>	
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="add">
+				</tr>
+			</table>
+		</form>
+	</body>
+{% if messages %}
+	{% for msg in messages %}
+		<script>
+			alert('{{msg}}')
+		</script>
+	{% endfor %}
+{% endif %}
+{% endblock %}  
+

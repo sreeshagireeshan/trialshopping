@@ -1,0 +1,18 @@
+<html>
+	<body>
+		<form method="post" action="{% url 'searchAction' %}">
+			{% csrf_token %}
+			
+			<table>
+			
+			<tr>
+			<td>Enter product name</td>
+			<td><input type="text" name="prodname" id="prodname"></td>
+			</tr>
+			<td></td>
+			<td><input type="submit" value="search"></td>
+			
+			</table>
+		</form>
+	</body>
+</html>
